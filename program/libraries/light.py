@@ -50,23 +50,42 @@ class Light():
         :param output_value:
         :return:
         """
-        if entry and marker:
 
-            output_value - 10
+        if entry and output_value == 100:
+
+            feedbackMarker = False
+            feedbackOuputValue = output_value - 1
+
+        elif entry and output_value == 0:
+
+            feedbackMarker = True
+            feedbackOuputValue = output_value + 1
+
+        elif entry and marker:
+
+            feedbackOuputValue = output_value + 1
 
         elif entry and marker is False:
 
-            output_value + 10
+            feedbackOuputValue = output_value - 1
 
         elif entry is False and marker:
 
-            marker_value = False
+            feedbackMarker = False
+            feedbackOuputValue = output_value
 
         elif entry is False and marker is False:
 
-            marker_value = True
+            feedbackMarker = True
+            feedbackOuputValue = output_value
 
-        return {'marker': marker_value, 'output': output_value}
+        else:
+
+            feedbackMarker = marker
+            feedbackOuputValue = output_value
+
+        return {'marker': feedbackMarker, 'ouput': feedbackOuputValue}
+
 
     def startTimer(self, name, timeValue):
         """
@@ -128,9 +147,3 @@ class Light():
             else:
 
                 return False
-
-
-
-
-
-
