@@ -2,7 +2,7 @@ class Program():
 
     def __init__(self):
 
-        print "Program Loaded"
+        print "Program loaded..."
 
     def startUp(self):
         """
